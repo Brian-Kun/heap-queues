@@ -46,7 +46,7 @@ public class StudentArrayHeap<P, V> extends AbstractArrayHeap<P, V> {
 	@Override
 	protected void bubbleDown(int index) {
 		//base case
-		if(getLeftChildOf(index) < heap.size() | getRightChildOf(index) < heap.size()){
+		if(getLeftChildOf(index) < heap.size()){
 			return;
 		}
 		//if the node at index has less priority than it's right children sawp
