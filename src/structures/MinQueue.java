@@ -32,7 +32,7 @@ public class MinQueue<V> implements PriorityQueue<Integer, V> {
 	@Override
 	public Iterator<Entry<Integer, V>> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return heap.asList().iterator() ;
 	}
 
 	@Override

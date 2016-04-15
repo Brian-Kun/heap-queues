@@ -45,24 +45,22 @@ public class StudentArrayHeap<P, V> extends AbstractArrayHeap<P, V> {
 
 	@Override
 	protected void bubbleDown(int index) {
-		//base case
-		if(getLeftChildOf(index) < heap.size()){
-			return;
-		}
-		//if the node at index has less priority than it's right children sawp
-		if(super.comparator.compare(heap.get(index).getPriority(), heap.get(getRightChildOf(index)).getPriority()) < 0){
-			swap(getRightChildOf(index),index);
-			bubbleDown(getRightChildOf(index));
+		int biggestChild = getLeftChildOf(index);
 			
-			//if the node at index has less priority than it's left children sawp
-		}else if(super.comparator.compare(heap.get(index).getPriority(), heap.get(getLeftChildOf(index)).getPriority()) < 0){
-			swap(getLeftChildOf(index),index);
-			bubbleDown(getLeftChildOf(index));
-		}
-		
-		
+			if(getLeftChildOf(index) < heap.size() == false){
+				return;
+			}
+			//figure out ehich child is bigger
+			if(getRightChildOf(index) < heap.size() && super.comparator.compare(heap.get(getLeftChildOf(index)).getPriority(), heap.get(getRightChildOf(index)).getPriority()) < 0){
+				biggestChild = getRightChildOf(index);
+				//if the node at index has less priority than it's left children swap
+			}
+			if(super.comparator.compare(heap.get(biggestChild).getPriority(), heap.get(index).getPriority()) > 0){
+				swap(biggestChild,index);
+				bubbleDown(biggestChild);
+			}else{
+				bubbleDown(heap.size());
+			}
 	}
-	
-	
 	
 }
